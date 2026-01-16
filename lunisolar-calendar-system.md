@@ -107,10 +107,10 @@ Tredecoluna contains 29 days in common years and 30 days in leap years:
 For a leap year, the Tredecoluna calendar would look like this:
 
 Sol|Moo|Mar|Mer|Jup|Ven|Sat|Ext|Ext
---|--|--|--|--|--|--
-|1|2|3|4|5|6|7
-|8|9|10|11|12|13|14
-15|16|17|18|19|20|21
+--|--|--|--|--|--|--|--|--
+|1|2|3|4|5|6|7| |
+|8|9|10|11|12|13|14| |
+15|16|17|18|19|20|21| |
 22|23|24|25|26|27|28|29|30
 
 
@@ -128,7 +128,7 @@ Because each month has exactly 28 days (4 complete weeks), and the first 12 mont
 
 - The 1st of every month is always Solday
 - The 2nd of every month is always Moonday
-- The 15th of every month is always Moonday
+- The 20th of every month is always Venday
 - Any given date always falls on the same weekday, every year
 
 This perpetual alignment is maintained by placing the extra day(s) outside the normal weekly cycle as "Extraday."
