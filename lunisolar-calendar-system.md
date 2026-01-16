@@ -81,11 +81,12 @@ We also endorse the classic astronomical symbols that have been used for centuri
 
 Each of the first 12 months contains exactly 28 days arranged in 4 complete weeks:
 
-So Mo Ma Me Ju Ve Sa
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28
+Sol|Moo|Mar|Mer|Jup|Ven|Sat
+--|--|--|--|--|--|--
+|1|2|3|4|5|6|7
+|8|9|10|11|12|13|14
+15|16|17|18|19|20|21
+22|23|24|25|26|27|28
 
 
 The 1st of every month always falls on Solday, the 8th on Solday, the 15th on Solday, and the 22nd on Solday. This pattern repeats identically in every month throughout the year.
@@ -103,11 +104,14 @@ Tredecoluna contains 29 days in common years and 30 days in leap years:
 - Day 29: **Extraday** (the 365th day of the year)
 - Day 30: **Extraday** (the 366th day of the year, leap day)
 
-So Mo Ma Me Ju Ve Sa Ex Ex
- 1  2  3  4  5  6  7
- 8  9 10 11 12 13 14
-15 16 17 18 19 20 21
-22 23 24 25 26 27 28 29 30
+For a leap year, the Tredecoluna calendar would look like this:
+
+Sol|Moo|Mar|Mer|Jup|Ven|Sat|Ext|Ext
+--|--|--|--|--|--|--
+|1|2|3|4|5|6|7
+|8|9|10|11|12|13|14
+15|16|17|18|19|20|21
+22|23|24|25|26|27|28|29|30
 
 
 ### The Extra Days
