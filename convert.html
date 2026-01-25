@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunisolar Calendar Converter</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="dark.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Lunisolar</div>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="details.html">How It Works</a>
+                <a href="convert.html">Converter</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 40px; padding-bottom: 40px;">
+        <h1>Lunisolar Calendar Converter</h1>
+        <p class="subtitle">Convert between Gregorian and Lunisolar calendar systems</p>
+
+        <div class="input-section">
+            <div class="input-card">
+                <h2>Gregorian Date</h2>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Year</label>
+                        <input type="number" id="g-year" value="2026" min="1" max="9999">
+                    </div>
+                    <div class="input-group">
+                        <label>Month</label>
+                        <select id="g-month">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Day</label>
+                        <input type="number" id="g-day" value="1" min="1" max="31">
+                    </div>
+                </div>
+                <button onclick="convertFromGregorian()">Convert from Gregorian</button>
+            </div>
+
+            <div class="input-card">
+                <h2>Lunisolar Date</h2>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Year</label>
+                        <input type="number" id="l-year" value="2026" min="1" max="9999">
+                    </div>
+                    <div class="input-group">
+                        <label>Month</label>
+                        <select id="l-month">
+                            <option value="1">Monoluna</option>
+                            <option value="2">Diluna</option>
+                            <option value="3">Triluna</option>
+                            <option value="4">Quadriluna</option>
+                            <option value="5">Quintiluna</option>
+                            <option value="6">Sextiluna</option>
+                            <option value="7">Septiluna</option>
+                            <option value="8">Octoluna</option>
+                            <option value="9">Noviluna</option>
+                            <option value="10">Deciluna</option>
+                            <option value="11">Ondecoluna</option>
+                            <option value="12">Dodecoluna</option>
+                            <option value="13">Tredecoluna</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Day</label>
+                        <input type="number" id="l-day" value="1" min="1" max="30">
+                    </div>
+                </div>
+                <button onclick="convertFromLunisolar()">Convert from Lunisolar</button>
+            </div>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div class="day-of-year">
+            <div class="label">Day of Year</div>
+            <div class="number" id="day-of-year">&mdash;</div>
+        </div>
+
+        <div class="results">
+            <div class="result-card gregorian">
+                <h3>Gregorian</h3>
+                <div class="date-numeric" id="gregorian-numeric">&mdash;</div>
+                <div class="date-full" id="gregorian-full">&mdash;</div>
+            </div>
+            <div class="result-card lunisolar">
+                <h3>Lunisolar</h3>
+                <div class="date-numeric" id="lunisolar-numeric">&mdash;</div>
+                <div class="date-full" id="lunisolar-full">&mdash;</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Lunisolar Calendar &middot; <a href="index.html">Home</a> &middot; <a href="details.html">How It Works</a> &middot; <a href="convert.html">Converter</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const monthNames = [
+            "Monoluna", "Diluna", "Triluna", "Quadriluna", "Quintiluna", "Sextiluna",
+            "Septiluna", "Octoluna", "Noviluna", "Deciluna", "Ondecoluna", "Dodecoluna",
+            "Tredecoluna"
+        ];
+
+        const weekdayNames = ["Solday", "Moonday", "Marsday", "Mercuday", "Jupiday", "Venday", "Saturnday"];
+
+        const gregorianMonths = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        const gregorianWeekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        function isLeapYear(year) {
+            return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+        }
+
+        function daysInGregorianMonth(year, month) {
+            const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (month === 2 && isLeapYear(year)) return 29;
+            return days[month - 1];
+        }
+
+        function gregorianToDayOfYear(year, month, day) {
+            const days = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+            let doy = days[month - 1] + day;
+            if (month > 2 && isLeapYear(year)) doy++;
+            return doy;
+        }
+
+        function dayOfYearToGregorian(year, dayOfYear) {
+            const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (isLeapYear(year)) days[1] = 29;
+
+            let remaining = dayOfYear;
+            let month = 0;
+            while (remaining > days[month]) {
+                remaining -= days[month];
+                month++;
+            }
+            return { month: month + 1, day: remaining };
+        }
+
+        function dayOfYearToLunisolar(dayOfYear) {
+            if (dayOfYear <= 336) {
+                return {
+                    month: Math.floor((dayOfYear - 1) / 28) + 1,
+                    day: ((dayOfYear - 1) % 28) + 1
+                };
+            } else {
+                return { month: 13, day: dayOfYear - 336 };
+            }
+        }
+
+        function lunisolarToDayOfYear(month, day) {
+            return (month - 1) * 28 + day;
+        }
+
+        function lunisolarWeekday(day) {
+            if (day > 28) return "Extraday";
+            return weekdayNames[(day - 1) % 7];
+        }
+
+        function gregorianWeekday(year, month, day) {
+            const date = new Date(year, month - 1, day);
+            return gregorianWeekdays[date.getDay()];
+        }
+
+        function pad2(n) {
+            return n.toString().padStart(2, '0');
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        function hideError() {
+            document.getElementById('error').classList.add('hidden');
+        }
+
+        function displayResults(year, dayOfYear, gMonth, gDay, lMonth, lDay) {
+            document.getElementById('day-of-year').textContent = dayOfYear;
+
+            document.getElementById('gregorian-numeric').textContent =
+                `${year}-${pad2(gMonth)}-${pad2(gDay)}`;
+            document.getElementById('gregorian-full').textContent =
+                `${gregorianWeekday(year, gMonth, gDay)}, ${gDay} ${gregorianMonths[gMonth-1]} ${year}`;
+
+            document.getElementById('lunisolar-numeric').textContent =
+                `${year}|${pad2(lMonth)}|${pad2(lDay)}`;
+            document.getElementById('lunisolar-full').textContent =
+                `${lunisolarWeekday(lDay)}, ${lDay} ${monthNames[lMonth-1]} ${year}`;
+
+            // Update both input sections
+            document.getElementById('g-year').value = year;
+            document.getElementById('g-month').value = gMonth;
+            document.getElementById('g-day').value = gDay;
+
+            document.getElementById('l-year').value = year;
+            document.getElementById('l-month').value = lMonth;
+            document.getElementById('l-day').value = lDay;
+        }
+
+        function convertFromGregorian() {
+            hideError();
+
+            const year = parseInt(document.getElementById('g-year').value);
+            const month = parseInt(document.getElementById('g-month').value);
+            const day = parseInt(document.getElementById('g-day').value);
+
+            // Validate
+            const maxDay = daysInGregorianMonth(year, month);
+            if (day < 1 || day > maxDay) {
+                showError(`Invalid day ${day} for ${gregorianMonths[month-1]}. Must be 1-${maxDay}.`);
+                return;
+            }
+
+            const dayOfYear = gregorianToDayOfYear(year, month, day);
+            const luni = dayOfYearToLunisolar(dayOfYear);
+
+            displayResults(year, dayOfYear, month, day, luni.month, luni.day);
+        }
+
+        function convertFromLunisolar() {
+            hideError();
+
+            const year = parseInt(document.getElementById('l-year').value);
+            const month = parseInt(document.getElementById('l-month').value);
+            const day = parseInt(document.getElementById('l-day').value);
+
+            // Validate
+            let maxDay = 28;
+            if (month === 13) {
+                maxDay = isLeapYear(year) ? 30 : 29;
+            }
+            if (day < 1 || day > maxDay) {
+                showError(`Invalid day ${day} for ${monthNames[month-1]}. Must be 1-${maxDay}.`);
+                return;
+            }
+
+            const dayOfYear = lunisolarToDayOfYear(month, day);
+            const greg = dayOfYearToGregorian(year, dayOfYear);
+
+            displayResults(year, dayOfYear, greg.month, greg.day, month, day);
+        }
+
+        // Initialize with today's date
+        window.onload = function() {
+            const today = new Date();
+            document.getElementById('g-year').value = today.getFullYear();
+            document.getElementById('g-month').value = today.getMonth() + 1;
+            document.getElementById('g-day').value = today.getDate();
+            document.getElementById('l-year').value = today.getFullYear();
+            convertFromGregorian();
+        };
+    </script>
+</body>
+</html>

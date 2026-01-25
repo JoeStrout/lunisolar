@@ -1,0 +1,106 @@
+/* Common styles shared across all Lunisolar pages */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation */
+nav {
+    background: #1a1a2e;
+    padding: 15px 20px;
+}
+
+nav .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    color: #ffd700;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+nav .links a {
+    color: #eee;
+    margin-left: 25px;
+    font-size: 0.95em;
+}
+
+nav .links a:hover {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+.btn-secondary {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background: #1a1a2e;
+    color: #888;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ffd700;
+}
+
+/* Responsive nav */
+@media (max-width: 600px) {
+    nav .links a {
+        margin-left: 15px;
+        font-size: 0.85em;
+    }
+}

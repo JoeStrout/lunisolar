@@ -1,0 +1,415 @@
+/* Light theme for index.html and details.html */
+
+body {
+    color: #333;
+    background: #fafafa;
+}
+
+a {
+    color: #b8860b;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.hero .tagline {
+    font-size: 1.3em;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Page Header (for details page) */
+.page-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.2em;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 1.1em;
+}
+
+/* Section backgrounds */
+.aha-section,
+.cta-section {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.benefits-section,
+.how-section {
+    padding: 60px 20px;
+    background: #fafafa;
+}
+
+/* Section headers */
+.aha-section h2,
+.benefits-section h2,
+.how-section h2,
+.cta-section h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    color: #1a1a2e;
+}
+
+.cta-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 30px;
+}
+
+/* Comparison boxes */
+.comparison {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.comparison-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.comparison-box.gregorian {
+    background: #f5f5f5;
+    border: 2px solid #ddd;
+}
+
+.comparison-box.lunisolar {
+    background: #fffef5;
+    border: 2px solid #ffd700;
+}
+
+.comparison-box h3 {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.comparison-box .dates {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+.comparison-box.gregorian .dates {
+    color: #666;
+}
+
+.comparison-box.lunisolar .dates {
+    color: #1a1a2e;
+}
+
+.comparison-box .punchline {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.comparison-box.gregorian .punchline {
+    color: #999;
+}
+
+.comparison-box.lunisolar .punchline {
+    color: #b8860b;
+}
+
+/* Benefits */
+.benefits {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.benefit {
+    flex: 1;
+    min-width: 250px;
+    max-width: 280px;
+    text-align: center;
+    padding: 20px;
+}
+
+.benefit .icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.benefit h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+}
+
+.benefit p {
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* How it works grid */
+.how-section .intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #666;
+}
+
+.how-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.how-item {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+}
+
+.how-item .number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background: #ffd700;
+    color: #1a1a2e;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.how-item h3 {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+}
+
+.how-item p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* CTA buttons */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Main content (details page) */
+main {
+    padding: 50px 20px;
+    background: #fff;
+    line-height: 1.7;
+}
+
+main .container {
+    max-width: 800px;
+}
+
+main h2 {
+    font-size: 1.6em;
+    color: #1a1a2e;
+    margin: 50px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffd700;
+}
+
+main h2:first-child {
+    margin-top: 0;
+}
+
+main h3 {
+    font-size: 1.2em;
+    color: #1a1a2e;
+    margin: 30px 0 15px;
+}
+
+main p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px;
+    font-size: 0.95em;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #1a1a2e;
+    color: #ffd700;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: #fffef5;
+}
+
+.month-number {
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #ccc;
+    border: 2px solid #1a1a2e;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0 30px;
+    max-width: 600px;
+}
+
+.calendar-grid .header {
+    background: #1a1a2e;
+    color: #ffd700;
+    padding: 10px 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.calendar-grid .day {
+    background: #fff;
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.calendar-grid .day.highlight {
+    background: #fffef5;
+    font-weight: bold;
+    color: #b8860b;
+}
+
+/* Calendar Section (index page) */
+.calendar-section {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.calendar-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #1a1a2e;
+}
+
+.calendar-section .calendar-grid {
+    margin: 0 auto;
+}
+
+/* Info Boxes */
+.info-box {
+    background: #fffef5;
+    border-left: 4px solid #ffd700;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.info-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Lists */
+ul {
+    margin: 15px 0 20px 25px;
+    color: #444;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* FAQ */
+.faq-item {
+    margin-bottom: 30px;
+}
+
+.faq-item h3 {
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #555;
+}
+
+/* CTA section on details page */
+.cta-section {
+    background: #fafafa;
+}
+
+.cta-section h2 {
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero .tagline {
+        font-size: 1.1em;
+    }
+
+    .page-header h1 {
+        font-size: 1.8em;
+    }
+
+    .calendar-grid .header,
+    .calendar-grid .day {
+        padding: 8px 3px;
+        font-size: 0.75em;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+}

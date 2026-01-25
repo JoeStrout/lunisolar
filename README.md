@@ -14,8 +14,8 @@ For details, see [the overview document](lunisolar-calendar-system.md).
 Here we have some short scripts to convert between Gregorian (the standard traditional) dates and Lunisolar dates in:
 
 - [Python](lunisolar_converter.py)
-- [MiniScript](lunisolar_converter.py)
-- [HTML/JavaScript](lunisolar.html)
+- [MiniScript](lunisolar_converter.ms)
+- [HTML/JavaScript](convert.html)
 
 
 
