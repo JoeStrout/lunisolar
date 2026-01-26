@@ -309,6 +309,10 @@ tr:hover {
     font-size: 0.8em;
 }
 
+.calendar-grid .header .full {
+    display: inline;
+}
+
 .calendar-grid .header .abbr {
     display: none;
 }
